@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "lotmmc",
+  "version": "${version}",
+  "name": "Lord of the Mysteries Mod",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/lotmmc/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.rokz.lotmMc.LotmMcDataGenerator"
+    ],
+    "client": [
+      "org.rokz.lotmMc.LotmMcClient"
+    ],
+    "main": [
+      "org.rokz.lotmMc.LotmMc"
+    ]
+  },
+  "mixins": [
+    "lotm-mc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
