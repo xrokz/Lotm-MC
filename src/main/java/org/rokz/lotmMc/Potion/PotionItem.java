@@ -11,6 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import org.jspecify.annotations.NonNull;
 import org.rokz.lotmMc.LotmMc;
 import org.rokz.lotmMc.PathwaySequence;
 
@@ -48,7 +49,7 @@ public class PotionItem extends Item {
 		return super.finishUsing(stack, world, user);
 	}
 
-	private void consumePotion(World world, PlayerEntity player, String pathway, int sequence) {
+	private void consumePotion(World world, @NonNull PlayerEntity player, String pathway, int sequence) {
 		player.sendMessage(Text.of(pathway + sequence), false);
 		player.sendMessage(Text.of(String.valueOf(this.sequence)), false);
 		player.addStatusEffect(
