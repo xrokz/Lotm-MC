@@ -16,8 +16,11 @@ import org.rokz.lotmMc.PathwaySequence;
 
 public class PotionItem extends Item {
 
+	private final PathwaySequence sequence;
+
 	public PotionItem(Settings settings, PathwaySequence sequence) {
 		super(settings);
+		this.sequence = sequence;
 	}
 
 	@Override
@@ -25,16 +28,11 @@ public class PotionItem extends Item {
 		return UseAction.DRINK;
 	}
 
-//	@Override
-	public int getMaxUseTime(ItemStack stack) {
-		return 32;
-	}
 
 	@Override
 	public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
 		if (!world.isClient() && user instanceof PlayerEntity player) {
 
-			// Example effect (replace with pathway logic)
 			Identifier id = Registries.ITEM.getId(stack.getItem());
 
 			if (id.getNamespace().equals(LotmMc.MOD_ID)) {
@@ -51,10 +49,8 @@ public class PotionItem extends Item {
 	}
 
 	private void consumePotion(World world, PlayerEntity player, String pathway, int sequence) {
-//		int duration = 100*(10-sequence);
-//				20*(sequence > 0 ? 10-sequence : 10);
-//		player.sendMessage(Text.of(String.valueOf(duration)), true);
-		player.sendMessage(Text.of(String.valueOf(pathway + sequence)), false);
+		player.sendMessage(Text.of(pathway + sequence), false);
+		player.sendMessage(Text.of(String.valueOf(this.sequence)), false);
 		player.addStatusEffect(
 				new StatusEffectInstance(
 						StatusEffects.NAUSEA, 300, 10-sequence

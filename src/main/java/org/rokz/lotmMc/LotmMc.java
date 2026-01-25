@@ -1,5 +1,4 @@
 package org.rokz.lotmMc;
-
 import net.fabricmc.api.ModInitializer;
 
 import org.rokz.lotmMc.Item.ModItem;
@@ -13,8 +12,8 @@ public class LotmMc implements ModInitializer {
     @Override
     public void onInitialize() {
         log.info("The crimson moon shines...");
-//      ModItem.loadItems();
         ModItem.registerAll();
+
     }
 
 }

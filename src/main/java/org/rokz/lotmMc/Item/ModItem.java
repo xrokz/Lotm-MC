@@ -13,20 +13,16 @@ import org.rokz.lotmMc.LotmMc;
 import org.rokz.lotmMc.Potion.PotionItem;
 import org.rokz.lotmMc.PathwaySequence;
 
-import java.util.EnumMap;
-import java.util.Map;
+//import java.util.EnumMap;
+//import java.util.Map;
 
 public class ModItem {
-
-	public static final Map<PathwaySequence, Item> PATHWAY_ITEMS =
-			new EnumMap<>(PathwaySequence.class);
-
+//	public static final Map<PathwaySequence, Item> PATHWAY_ITEMS =
+//			new EnumMap<>(PathwaySequence.class);
 	public static void registerAll() {
 		for (PathwaySequence pathway : PathwaySequence.values()) {
 			Item item = registerPathwayItem(pathway);
-					ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
-						entries.add(item);
-					});
+					ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> entries.add(item));
 		}
 	}
 
