@@ -42,7 +42,6 @@ public class PotionItem extends Item {
 				int sequence = Integer.parseInt(parts[1]);
 
 				consumePotion(world, player, pathway, sequence);
-
 			}
 		}
 
