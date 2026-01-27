@@ -1,8 +1,10 @@
 package org.rokz.lotmMc.Item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.component.type.ConsumableComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -21,12 +23,12 @@ public class ModItem {
 //			new EnumMap<>(PathwaySequence.class);
 	public static void registerAll() {
 		for (PathwaySequence pathway : PathwaySequence.values()) {
-			Item item = registerPathwayItem(pathway);
+			PotionItem item = registerPathwayItem(pathway);
 					ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> entries.add(item));
 		}
 	}
 
-	public static Item registerPathwayItem(PathwaySequence sequence) {
+	public static PotionItem registerPathwayItem(PathwaySequence sequence) {
 
 		Identifier id = Identifier.of(
 				LotmMc.MOD_ID,
@@ -35,12 +37,12 @@ public class ModItem {
 
 		RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
 
-		Item.Settings settings = new Item.Settings()
+		PotionItem.Settings settings = new PotionItem.Settings()
 				.registryKey(key)
 				.maxCount(1)
-				.food(ModFood.PATHWAY_POTION);
+				.food(ModFood.PATHWAY_POTION, ConsumableComponents.drink().build()).useRemainder(Items.GLASS_BOTTLE);
 
-		Item item = new PotionItem(settings, sequence);
+		PotionItem item = new PotionItem(settings, sequence);
 		return Registry.register(Registries.ITEM, id, item);
 	}
 }
