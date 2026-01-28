@@ -242,6 +242,11 @@
   "item.lotmmc.arbiter_0": "Justiciar potion",
 
   "item.lotmmc.reseter_0": "unsequencer",
-  "itemGroup.lotmmc.potions": "LOTM potions"
+  "itemGroup.lotmmc.potions": "LOTM potions",
 
+  "key.category.lotmmc.lotm_key_category": "LOTM Potion Abilities",
+  "key.lotmmc.ability1": "Ability 1",
+  "key.lotmmc.ability2": "Ability 2",
+  "key.lotmmc.ability3": "Ability 3",
+  "key.lotmmc.ability4": "Ability 4"
 }

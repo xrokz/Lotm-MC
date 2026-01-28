@@ -17,6 +17,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jspecify.annotations.NonNull;
 import org.rokz.lotmMc.LotmMc;
+import org.rokz.lotmMc.LotmMcClient;
 import org.rokz.lotmMc.PathwaySequence;
 
 public class PotionItem extends Item {
@@ -60,13 +61,13 @@ public class PotionItem extends Item {
 	}
 
 	private void consumePotion(@NonNull PlayerEntity player, String pathway, int sequence) {
-
+		if(pathway.equals("reseter")) {
+			player.removeAttached(LotmMc.PlayerPath);
+			player.sendMessage(Text.of("imagine chickening out"), true);
+			return;
+		}
 		if(player.hasAttached(LotmMc.PlayerPath)) {
-			if(pathway.equals("reseter")) {
-				player.removeAttached(LotmMc.PlayerPath);
-				player.sendMessage(Text.of("imagine chickening out"), true);
-				return;
-			}
+
 			String  playerPath = player.getAttached(LotmMc.PlayerPath);
 			assert playerPath != null;
 
